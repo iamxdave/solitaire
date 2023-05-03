@@ -1,0 +1,25 @@
+﻿.footer {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+}
+
+.footer div.info {
+    display: flex;
+    align-items: center;
+}
+
+.footer div.info div {
+    margin: 0rem 2rem;   
+}
+
+a {
+    display: inline-block;
+}
+
+img {
+    width: 30px;
+    height: 30px;
+    margin-top: 2px;
+}
+

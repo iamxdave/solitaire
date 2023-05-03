@@ -1,0 +1,11 @@
+﻿<div class="deck-pile">
+    @foreach (Card card in Cards)
+    {
+        <CardItem CardName=@card.CardName></CardItem>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<Card> Cards { get; set; }
+}

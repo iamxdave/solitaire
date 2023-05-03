@@ -1,0 +1,72 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Shared\Footer.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Games\Solitaire.Games.Core\Solitaire.Games.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\cards\10_of_clubs.png" />
+    <None Include="wwwroot\images\cards\10_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\10_of_hearts.png" />
+    <None Include="wwwroot\images\cards\10_of_spades.png" />
+    <None Include="wwwroot\images\cards\2_of_clubs.png" />
+    <None Include="wwwroot\images\cards\2_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\2_of_hearts.png" />
+    <None Include="wwwroot\images\cards\2_of_spades.png" />
+    <None Include="wwwroot\images\cards\3_of_clubs.png" />
+    <None Include="wwwroot\images\cards\3_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\3_of_hearts.png" />
+    <None Include="wwwroot\images\cards\3_of_spades.png" />
+    <None Include="wwwroot\images\cards\4_of_clubs.png" />
+    <None Include="wwwroot\images\cards\4_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\4_of_hearts.png" />
+    <None Include="wwwroot\images\cards\4_of_spades.png" />
+    <None Include="wwwroot\images\cards\5_of_clubs.png" />
+    <None Include="wwwroot\images\cards\5_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\5_of_hearts.png" />
+    <None Include="wwwroot\images\cards\5_of_spades.png" />
+    <None Include="wwwroot\images\cards\6_of_clubs.png" />
+    <None Include="wwwroot\images\cards\6_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\6_of_hearts.png" />
+    <None Include="wwwroot\images\cards\6_of_spades.png" />
+    <None Include="wwwroot\images\cards\7_of_clubs.png" />
+    <None Include="wwwroot\images\cards\7_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\7_of_hearts.png" />
+    <None Include="wwwroot\images\cards\7_of_spades.png" />
+    <None Include="wwwroot\images\cards\8_of_clubs.png" />
+    <None Include="wwwroot\images\cards\8_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\8_of_hearts.png" />
+    <None Include="wwwroot\images\cards\8_of_spades.png" />
+    <None Include="wwwroot\images\cards\9_of_clubs.png" />
+    <None Include="wwwroot\images\cards\9_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\9_of_hearts.png" />
+    <None Include="wwwroot\images\cards\9_of_spades.png" />
+    <None Include="wwwroot\images\cards\ace_of_clubs.png" />
+    <None Include="wwwroot\images\cards\ace_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\ace_of_hearts.png" />
+    <None Include="wwwroot\images\cards\ace_of_spades.png" />
+    <None Include="wwwroot\images\cards\jack_of_clubs.png" />
+    <None Include="wwwroot\images\cards\jack_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\jack_of_hearts.png" />
+    <None Include="wwwroot\images\cards\jack_of_spades.png" />
+    <None Include="wwwroot\images\cards\king_of_clubs.png" />
+    <None Include="wwwroot\images\cards\king_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\king_of_hearts.png" />
+    <None Include="wwwroot\images\cards\king_of_spades.png" />
+    <None Include="wwwroot\images\cards\queen_of_clubs.png" />
+    <None Include="wwwroot\images\cards\queen_of_diamonds.png" />
+    <None Include="wwwroot\images\cards\queen_of_hearts.png" />
+    <None Include="wwwroot\images\cards\queen_of_spades.png" />
+  </ItemGroup>
+
+</Project>

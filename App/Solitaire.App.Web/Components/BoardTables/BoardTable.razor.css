@@ -1,0 +1,18 @@
+﻿.board-table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: inherit;
+    border: 3px solid #082710;
+    border-radius: 25px;
+    margin: 10px;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .board-table {
+        width: 95%;
+    }
+}

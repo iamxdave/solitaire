@@ -1,0 +1,26 @@
+﻿<div class="card-item draggable" draggable="true" @ondragstart="@(() => HandleDragStart())" style="--index: @Index;">
+    <img src="/images/cards/@ImageName"/>
+</div>
+
+@code {
+    [Parameter]
+    public string? CardName { get; set; }
+    [Parameter]
+    public bool IsFlipped { get; set; }
+    [Parameter]
+    public int Index { get; set; }
+    public string ImageName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (CardName is null)
+            ImageName = "blank.png";
+        else
+            ImageName = IsFlipped? $"{CardName}.png" : "cardback.jpg";
+    }
+
+    private void HandleDragStart()
+    {
+        
+    }
+}

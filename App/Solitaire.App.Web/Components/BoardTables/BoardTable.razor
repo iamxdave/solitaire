@@ -1,0 +1,17 @@
+﻿
+
+<div class="board-table">
+    <MainBoard Deck="@Game.Deck"></MainBoard>
+    <SideBoard Deck="@Game.Deck"></SideBoard>
+</div>
+
+@code {
+    public Game Game { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Game = GameFactory.Create("new-player");
+    }
+
+
+}

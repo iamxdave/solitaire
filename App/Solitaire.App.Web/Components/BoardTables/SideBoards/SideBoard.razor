@@ -1,0 +1,19 @@
+﻿<div class="side-board">
+    <div class="pile">
+        <DeckPile Cards="@Deck.GetCards(3)"></DeckPile>
+    </div>
+    <div class="pile">
+        <WastePile></WastePile>
+    </div>
+    <div class="pile"></div>
+     @foreach (string suit in new[] { "♠", "♥", "♦", "♣" }) {
+         <div class="pile">
+             <SuitPile Suit=@suit></SuitPile>
+        </div>
+     }
+</div>
+
+@code {
+    [Parameter]
+    public CardDeck Deck { get; set; }
+}

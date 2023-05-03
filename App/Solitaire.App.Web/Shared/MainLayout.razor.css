@@ -1,0 +1,19 @@
+﻿.page, main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page {
+    height: inherit;
+}
+
+main {
+    background: url(images/background.jpg);
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+
+

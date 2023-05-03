@@ -1,0 +1,31 @@
+﻿.card-item {
+    width: inherit;
+    height: auto;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.board-pile .card-item {
+    z-index: var(--index);
+    top: calc(var(--index) * 20px);
+}
+
+
+
+
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    border: 2px solid white;
+    filter: grayscale(50%);
+    -webkit-box-shadow: 0px 15px 8px 0px rgba(8, 39, 16, 1);
+    -moz-box-shadow: 0px 15px 8px 0px rgba(8, 39, 16, 1);
+    box-shadow: 0px 15px 8px 0px rgba(8, 39, 16, 1);
+    z-index: 1;
+}
+

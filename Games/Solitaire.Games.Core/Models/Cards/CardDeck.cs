@@ -1,0 +1,37 @@
+﻿namespace Soltaire.Games.Core.Models.Cards
+{
+    public class CardDeck
+    {
+        public List<Card> Cards { get; set; }
+
+        public CardDeck()
+        {
+            Cards = new List<Card>();
+        }
+        public Card GetCard()
+        {
+            var card = Cards.FirstOrDefault();
+
+            if(card == null)
+                throw new NullReferenceException("Player is out of cards!");
+
+            Cards.Remove(card);
+            return card;
+
+        }
+
+        public List<Card> GetCards(int number)
+        {
+            var cards = Cards.GetRange(0, number);
+            Cards.RemoveRange(0, number);
+            return cards;
+        }
+
+        public List<Card> GetCards()
+        {
+            var cards = Cards;
+            Cards.Clear();
+            return cards;
+        }
+    }
+}

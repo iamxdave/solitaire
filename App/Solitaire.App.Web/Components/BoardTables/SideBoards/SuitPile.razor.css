@@ -1,0 +1,10 @@
+﻿.suit-pile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.suit {
+    margin-bottom: 10px;
+    font-size: 4vw;
+}
