@@ -1,15 +1,19 @@
-﻿using Soltaire.Games.Core.Models.Cards;
+﻿using Solitaire.Games.Core.Models.Boards;
+using Solitaire.Games.Core.Models.Piles;
+using Solitaire.Games.Core.Models.Cards;
 
-namespace Soltaire.Games.Core.Models
+namespace Solitaire.Games.Core.Models
 {
     public class GameFactory
     {
         public static Game Create(string playerName)
         {
+            var deck = CardDeckFactory.Create();
+
             var game = new Game
             {
-                Deck = CardDeckFactory.Create(),
-                Cards = new List<Card>(),
+                Deck = deck,
+                Board = BoardFactory.Create(deck),
                 Player = new Player(playerName),
             };
 

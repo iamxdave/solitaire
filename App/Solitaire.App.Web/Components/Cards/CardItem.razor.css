@@ -6,12 +6,11 @@
     top: 0;
     left: 0;
     z-index: 1;
-    pointer-events: none;
 }
 
 .board-pile .card-item {
     z-index: var(--index);
-    top: calc(var(--index) * 20px);
+    top: calc((var(--index) - 1) * 25px);
 }
 
 

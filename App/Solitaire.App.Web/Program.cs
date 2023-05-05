@@ -1,8 +1,9 @@
-
+using Plk.Blazor.DragDrop;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddBlazorDragDrop();
 
 var app = builder.Build();
 

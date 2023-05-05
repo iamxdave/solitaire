@@ -1,0 +1,21 @@
+﻿<div class="game-manager">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+
+
+@code {
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    public Game Game { get; set; }
+
+    protected override void OnInitialized()
+    {
+        Game = GameFactory.Create("new-player");
+    }
+
+
+}

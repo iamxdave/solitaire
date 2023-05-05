@@ -1,12 +1,24 @@
-﻿<div class="board-pile">
-    @for(int i = 0; i < Cards.Count - 1; i++)
-    {
-        <CardItem CardName=Cards[i].CardName IsFlipped=false Index=i></CardItem>
-    }
-    <CardItem CardName=@Cards[Cards.Count - 1].CardName IsFlipped=true Index=@(Cards.Count - 1)></CardItem>
+﻿@using Solitaire.Games.Core.Models.Piles;
+
+<div class="board-pile">
+    <Dropzone Items="Pile.Cards" TItem="Card">
+        @if(Pile.IsFirstCard(context))
+        {
+            <div class="pile border-pile"></div>
+        }
+        else if(Pile.IsLastCard(context))
+        {
+            <CardItem Card=@context IsFlipped=true IndexZ=@Pile.GetCardIndex(context)></CardItem>
+        } else
+        {
+            <CardItem Card=@context IsFlipped=@context.IsFlipped IndexZ=@Pile.GetCardIndex(context)></CardItem>
+        }
+    </Dropzone>
 </div>
 
 @code {
+    [CascadingParameter]
+    public GameManager GameManager { get; set; }
     [Parameter]
-    public List<Card> Cards { get; set; }
+    public Pile Pile { get; set; }
 }

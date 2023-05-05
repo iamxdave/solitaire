@@ -1,12 +1,14 @@
-﻿using Soltaire.Games.Core.Models.Cards;
+﻿using Solitaire.Games.Core.Models.Boards;
+using Solitaire.Games.Core.Models.Piles;
+using Solitaire.Games.Core.Models.Cards;
 
-namespace Soltaire.Games.Core.Models
+namespace Solitaire.Games.Core.Models
 {
     public class Game
     {
         public Player Player { get; init; }
         public CardDeck Deck { get; set; }
-        public List<Card> Cards { get; set; }
+        public Board Board { get; set; }
         public bool IsOver { get; set; }
     }
 }

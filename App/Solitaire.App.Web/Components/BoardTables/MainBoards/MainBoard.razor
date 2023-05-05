@@ -1,14 +1,14 @@
 ﻿<div class="main-board">
-    @for(int i = 1; i <= 7; i++)
+    @foreach(var boardPile in GameManager.Game.Board.BoardPiles)
     {
         <div class="pile">
-            <BoardPile Cards=@Deck.GetCards(i)></BoardPile>
+            <BoardPile Pile=@boardPile></BoardPile>
         </div>
     }   
 </div>
 
 
 @code {
-    [Parameter]
-    public CardDeck Deck { get; set; }
+    [CascadingParameter]
+    public GameManager GameManager { get; set; }
 }

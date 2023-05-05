@@ -1,5 +1,5 @@
-﻿<div class="waste-pile border-pile">
-    @foreach (Card card in GameManager.Game.Board.WastePile.Cards)
+﻿<div class="draw-pile">
+    @foreach (Card card in GameManager.Game.Board.DrawPile.Cards)
     {
         <CardItem Card=@card></CardItem>
     }

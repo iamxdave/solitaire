@@ -1,4 +1,4 @@
-﻿namespace Soltaire.Games.Core.Models.Cards
+﻿namespace Solitaire.Games.Core.Models.Cards
 {
     public class CardSuit
     {

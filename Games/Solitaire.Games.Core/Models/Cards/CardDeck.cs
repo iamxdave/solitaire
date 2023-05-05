@@ -1,4 +1,4 @@
-﻿namespace Soltaire.Games.Core.Models.Cards
+﻿namespace Solitaire.Games.Core.Models.Cards
 {
     public class CardDeck
     {
@@ -27,9 +27,9 @@
             return cards;
         }
 
-        public List<Card> GetCards()
+        public List<Card> GetAllCards()
         {
-            var cards = Cards;
+            var cards = new List<Card>(Cards);
             Cards.Clear();
             return cards;
         }

@@ -1,4 +1,4 @@
-﻿namespace Soltaire.Games.Core.Models
+﻿namespace Solitaire.Games.Core.Models
 {
     public class Player
     {

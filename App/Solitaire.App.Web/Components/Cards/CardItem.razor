@@ -1,26 +1,26 @@
-﻿<div class="card-item draggable" draggable="true" @ondragstart="@(() => HandleDragStart())" style="--index: @Index;">
+﻿<div class="card-item" style="--index: @IndexZ;">
     <img src="/images/cards/@ImageName"/>
 </div>
 
 @code {
+    [CascadingParameter]
+    public GameManager GameManager { get; set; }
     [Parameter]
-    public string? CardName { get; set; }
+    public Card Card { get; set; }
     [Parameter]
     public bool IsFlipped { get; set; }
     [Parameter]
-    public int Index { get; set; }
-    public string ImageName;
+    public int IndexZ { get; set; }
 
-    protected override async Task OnInitializedAsync()
+    private string ImageName;
+
+    protected override void OnInitialized()
     {
-        if (CardName is null)
+        if (Card is null)
             ImageName = "blank.png";
         else
-            ImageName = IsFlipped? $"{CardName}.png" : "cardback.jpg";
-    }
+            ImageName = IsFlipped? $"{Card.CardName}.png" : "cardback.jpg";
 
-    private void HandleDragStart()
-    {
-        
+        Card.IsFlipped = IsFlipped;
     }
 }

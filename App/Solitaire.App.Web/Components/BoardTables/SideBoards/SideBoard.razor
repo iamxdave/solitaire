@@ -1,6 +1,8 @@
-﻿<div class="side-board">
+﻿@using Solitaire.Games.Core.Handlers;
+
+<div class="side-board">
     <div class="pile">
-        <DeckPile Cards="@Deck.GetCards(3)"></DeckPile>
+        <DrawPile></DrawPile>
     </div>
     <div class="pile">
         <WastePile></WastePile>
@@ -14,6 +16,6 @@
 </div>
 
 @code {
-    [Parameter]
-    public CardDeck Deck { get; set; }
+    [CascadingParameter]
+    public GameManager GameManager { get; set; }
 }

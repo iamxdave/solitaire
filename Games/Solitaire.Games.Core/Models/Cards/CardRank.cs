@@ -1,6 +1,4 @@
-﻿
-
-namespace Soltaire.Games.Core.Models.Cards
+﻿namespace Solitaire.Games.Core.Models.Cards
 {
     public record CardRank(string Rank, int Value)
     {

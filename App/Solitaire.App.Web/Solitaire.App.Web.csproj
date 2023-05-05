@@ -69,4 +69,8 @@
     <None Include="wwwroot\images\cards\queen_of_spades.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="blazor-dragdrop" Version="2.4.0" />
+  </ItemGroup>
+
 </Project>
