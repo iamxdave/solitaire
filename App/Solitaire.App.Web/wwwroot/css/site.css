@@ -22,6 +22,11 @@ html, body{
     background-color: #082710;
 }
 
+.title, .info {
+    color: whitesmoke;
+    font-family: 'Playfair Display', serif;
+}
+
 main {
     -webkit-box-shadow: 0px 15px 8px 0px rgba(8, 39, 16, 1);
     -moz-box-shadow: 0px 15px 8px 0px rgba(8, 39, 16, 1);
@@ -47,21 +52,21 @@ main {
     position: relative;
 }
 
-.waste-pile, .suit-pile, .border-pile {
+.plk-dd-dropzone {
+    width: inherit;
+    height: inherit;
+    position: relative;
+}
+
+.draw-pile, .plk-dd-dropzone {
+    border: dotted 2px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+.draw-pile, .waste-pile, .suit-pile, .symbol-cover, .plk-dd-dropzone {
     aspect-ratio: calc(150/221.8);
 }
 
-.border-pile {
-    border: dotted 2px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-    opacity: 0.5;
-}
-
-
-.title, .info {
-    color: whitesmoke;
-    font-family: 'Playfair Display', serif;
-}
 
 #blazor-error-ui {
     background: lightyellow;

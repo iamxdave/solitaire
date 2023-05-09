@@ -1,11 +1,14 @@
-﻿<div class="draw-pile">
-    @foreach (Card card in GameManager.Game.Board.DrawPile.Cards)
-    {
-        <CardItem Card=@card></CardItem>
-    }
+﻿<div class="draw-pile" @onclick="@OnClick">
+    <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => false">
+        <CardItem Card=@context IndexZ=@Pile.Cards.IndexOf(context)></CardItem>
+    </Dropzone>
 </div>
 
 @code {
     [CascadingParameter]
     public GameManager GameManager { get; set; }
+    [Parameter]
+    public Pile Pile { get; set; }
+    [Parameter]
+    public Action OnClick { get; set; }
 }

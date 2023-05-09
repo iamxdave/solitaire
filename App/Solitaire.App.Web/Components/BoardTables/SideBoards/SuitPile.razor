@@ -1,10 +1,30 @@
-﻿<div class="suit-pile border-pile">
-    <div class="suit">
-        @Suit
-    </div>
+﻿@inject ICardValidationService _service;
+
+<div class="suit-pile">
+    <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => DragCardsAccepted(first, second)">
+        <CardItem Card=@context IsFlipped=@context.IsFlipped IndexZ=@Pile.Cards.IndexOf(context)></CardItem>      
+    </Dropzone>
 </div>
 
 @code {
+    [CascadingParameter]
+    public GameManager GameManager { get; set; }
     [Parameter]
-    public string Suit { get; set; }
+    public CardSuit Suit { get; set; }
+    [Parameter]
+    public Pile Pile { get; set; }
+
+    private bool DragCardsAccepted(Card first, Card second)
+    {
+        if (_service.AreSameSuits(first, Suit))
+        {
+            if (Pile.IsEmpty() && second == null &&
+                _service.IsAce(first))
+                return true;
+
+            if (_service.AreConsecutiveValuesAscending(first, second))
+                return true;
+        }
+        return false;
+    }
 }

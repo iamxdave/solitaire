@@ -1,21 +1,42 @@
-﻿@using Solitaire.Games.Core.Handlers;
+﻿
 
 <div class="side-board">
     <div class="pile">
-        <DrawPile></DrawPile>
+        <DrawPile Pile="@GameManager.Game.Board.DrawPile" OnClick="@GameManager.DrawCard"></DrawPile>
     </div>
+
     <div class="pile">
-        <WastePile></WastePile>
+        <WastePile Pile="@GameManager.Game.Board.WastePile" OnClick="@GameManager.ResetDeck"></WastePile>
     </div>
+
     <div class="pile"></div>
-     @foreach (string suit in new[] { "♠", "♥", "♦", "♣" }) {
-         <div class="pile">
-             <SuitPile Suit=@suit></SuitPile>
+    @foreach(var pile in GameManager.Game.Board.SuitPiles)
+    {
+        <div class="pile">
+            <SymbolCover Symbol=@GetSymbol(pile.Key)></SymbolCover>
+            <SuitPile Suit=@pile.Key Pile=@pile.Value></SuitPile>
         </div>
-     }
+    }
 </div>
 
 @code {
     [CascadingParameter]
     public GameManager GameManager { get; set; }
+
+    protected string GetSymbol(CardSuit cardSuit)
+    {
+        switch (cardSuit)
+        {
+            case CardSuit.hearts:
+                return "♥";
+            case CardSuit.diamonds:
+                return "♦";
+            case CardSuit.clubs:
+                return "♣";
+            case CardSuit.spades:
+                return "♠";
+            default:
+                throw new ArgumentException($"Invalid card suit: {cardSuit}", nameof(cardSuit));
+        }
+    }
 }

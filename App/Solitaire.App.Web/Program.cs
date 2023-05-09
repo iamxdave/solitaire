@@ -1,9 +1,11 @@
 using Plk.Blazor.DragDrop;
+using Solitaire.Games.Core.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddBlazorDragDrop();
+builder.Services.AddSingleton<ICardValidationService, CardValidationService>();
 
 var app = builder.Build();
 

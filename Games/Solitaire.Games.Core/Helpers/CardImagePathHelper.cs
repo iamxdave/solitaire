@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Solitaire.Games.Core.Helpers
 {
-    internal static class WWWRootHelper
+    internal static class CardImagePathHelper
     {
         public static string GetCardPath(string cardName)
         {

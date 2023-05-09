@@ -3,12 +3,15 @@
     public record Card
     {
         public string CardName { get; }
-        public bool IsFlipped { get; set; }
+        public CardRank CardRank { get; }
+        public CardSuit CardSuit { get; }
+        public bool IsFlipped { get; set; } = false;
 
-        public Card(CardRank cardRank, string suit)
+        public Card(CardRank cardRank, CardSuit cardSuit)
         {
-            CardName = $"{cardRank.Rank}_of_{suit}";
-            IsFlipped = false;
+            CardRank = cardRank;
+            CardSuit = cardSuit;
+            CardName = $"{cardRank.Rank}_of_{cardSuit}";
         }
     }
 }

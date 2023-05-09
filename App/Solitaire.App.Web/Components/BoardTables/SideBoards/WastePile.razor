@@ -1,11 +1,21 @@
-﻿<div class="waste-pile border-pile">
-    @foreach (Card card in GameManager.Game.Board.WastePile.Cards)
-    {
-        <CardItem Card=@card></CardItem>
-    }
+﻿<div class="waste-pile" @onclick="@OnClick">
+    <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => DragCardsAccepted(first, second)">
+        <CardItem Card=@context IsFlipped=true IndexZ=@Pile.Cards.IndexOf(context) OnClick=@(() => GameManager.ClickCard(context))></CardItem>
+    </Dropzone>
 </div>
 
 @code {
     [CascadingParameter]
     public GameManager GameManager { get; set; }
+    [Parameter]
+    public Pile Pile { get; set; }
+    [Parameter]
+    public Action OnClick { get; set; }
+
+    private bool DragCardsAccepted(Card first, Card second)
+    {
+        var drawPile = GameManager.Game.Board.DrawPile;
+        
+        return first.IsFlipped == false && drawPile.Contains(first);
+    }
 }

@@ -9,9 +9,9 @@ namespace Solitaire.Games.Core.Models.Piles
         public Pile() { 
             Cards = new List<Card>();
         }
-        public int GetCardIndex(Card card)
+        public static List<Pile> operator +(List<Pile> a, Pile b)
         {
-            return Cards.IndexOf(card);
+            return new List<Pile>(a) {b};
         }
         public bool IsFirstCard(Card card)
         {
@@ -20,6 +20,14 @@ namespace Solitaire.Games.Core.Models.Piles
         public bool IsLastCard(Card card)
         {
             return Cards.IndexOf(card) == (Cards.Count - 1);
+        }
+        public bool IsEmpty()
+        {
+            return Cards.Count == 0;
+        }
+        public bool Contains(Card card)
+        {
+            return Cards.Any(c => c.Equals(card));
         }
     }
 }

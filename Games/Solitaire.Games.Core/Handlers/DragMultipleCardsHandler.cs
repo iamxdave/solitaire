@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Solitaire.Games.Core.Models.Cards
+namespace Solitaire.Games.Core.Handlers
 {
-    public enum CardSuit
+    public class DragMultipleCardsHandler
     {
-        hearts,
-        diamonds,
-        clubs,
-        spades
     }
 }

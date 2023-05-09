@@ -1,4 +1,7 @@
-﻿<div class="game-manager">
+﻿@using Solitaire.Games.Core.Handlers;
+@inject ICardValidationService _service;
+
+<div class="game-manager">
     <CascadingValue Value="this">
         @ChildContent
     </CascadingValue>
@@ -10,12 +13,29 @@
     [Parameter]
     public RenderFragment ChildContent { get; set; }
 
-    public Game Game { get; set; }
+    public Game Game { get; private set; }
+    private bool _gameCreated;
 
     protected override void OnInitialized()
     {
         Game = GameFactory.Create("new-player");
     }
 
+    public void DrawCard()
+    {
+        DrawCardHandler.Handle(Game);
+        StateHasChanged();
+    }
 
+    public void ResetDeck()
+    {
+        ResetDeckHandler.Handle(Game);
+        StateHasChanged();
+    }
+
+    public void ClickCard(Card card)
+    {
+        ClickCardHandler.Handle(Game, card, _service);
+        StateHasChanged();
+    }
 }

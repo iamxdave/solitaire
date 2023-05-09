@@ -1,0 +1,13 @@
+﻿.symbol-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: inherit;
+    position: absolute;
+}
+
+.symbol {
+    font-size: 4vw;
+    opacity: 0.5;
+    margin-bottom: 10px;
+}

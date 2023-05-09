@@ -1,5 +1,5 @@
-﻿<div class="card-item" style="--index: @IndexZ;">
-    <img src="/images/cards/@ImageName"/>
+﻿<div class="card-item" style="--index: @IndexZ;" @onclick=@OnClick>
+    <img src="/images/cards/@ImageName" style="--select: @(IsFlipped ? "all" : "none")" />
 </div>
 
 @code {
@@ -11,8 +11,13 @@
     public bool IsFlipped { get; set; }
     [Parameter]
     public int IndexZ { get; set; }
+    [Parameter]
+    public Action OnClick { get; set; }
+
 
     private string ImageName;
+
+    private string Select;
 
     protected override void OnInitialized()
     {
@@ -22,5 +27,7 @@
             ImageName = IsFlipped? $"{Card.CardName}.png" : "cardback.jpg";
 
         Card.IsFlipped = IsFlipped;
+
+        Select = IsFlipped ? "all" : "none";
     }
 }
