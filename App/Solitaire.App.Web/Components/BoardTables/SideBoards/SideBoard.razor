@@ -2,11 +2,11 @@
 
 <div class="side-board">
     <div class="pile">
-        <DrawPile Pile="@GameManager.Game.Board.DrawPile" OnClick="@GameManager.DrawCard"></DrawPile>
+        <DrawPile Pile="@GameManager.Game.Board.DrawPile" OnClick="@Action"></DrawPile>
     </div>
 
     <div class="pile">
-        <WastePile Pile="@GameManager.Game.Board.WastePile" OnClick="@GameManager.ResetDeck"></WastePile>
+        <WastePile Pile="@GameManager.Game.Board.WastePile"></WastePile>
     </div>
 
     <div class="pile"></div>
@@ -22,6 +22,15 @@
 @code {
     [CascadingParameter]
     public GameManager GameManager { get; set; }
+
+
+    private void Action()
+    {
+        if (GameManager.Game.Board.DrawPile.IsEmpty())
+            GameManager.ResetDeck();
+        else
+            GameManager.DrawCard();
+    }
 
     protected string GetSymbol(CardSuit cardSuit)
     {
