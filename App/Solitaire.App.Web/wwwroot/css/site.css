@@ -37,36 +37,26 @@ main {
     width: 90%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
     justify-content: center;
     gap: 2rem;
 }
 
+.main-board {
+    align-items: flex-start;
+}
 
 .pile {
     height: 100%;
     max-width: 150px;
-    min-width: 50px;
+    min-width: 8vw;
     width: 100%;
     display: inline-block;
     position: relative;
 }
 
-.plk-dd-dropzone {
-    width: inherit;
-    height: inherit;
-    position: relative;
+.draw-pile, .waste-pile, .suit-pile, .symbol-cover {
+    aspect-ratio: calc(400/580);
 }
-
-.draw-pile, .plk-dd-dropzone {
-    border: dotted 2px rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-}
-
-.draw-pile, .waste-pile, .suit-pile, .symbol-cover, .plk-dd-dropzone {
-    aspect-ratio: calc(150/221.8);
-}
-
 
 #blazor-error-ui {
     background: lightyellow;

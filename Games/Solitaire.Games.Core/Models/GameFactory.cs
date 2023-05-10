@@ -1,12 +1,11 @@
 ﻿using Solitaire.Games.Core.Models.Boards;
-using Solitaire.Games.Core.Models.Piles;
 using Solitaire.Games.Core.Models.Cards;
 
 namespace Solitaire.Games.Core.Models
 {
     public class GameFactory
     {
-        public static Game Create(string playerName)
+        public static Game Create()
         {
             var deck = CardDeckFactory.Create();
 
@@ -14,7 +13,6 @@ namespace Solitaire.Games.Core.Models
             {
                 Deck = deck,
                 Board = BoardFactory.Create(deck),
-                Player = new Player(playerName),
             };
 
             return game;

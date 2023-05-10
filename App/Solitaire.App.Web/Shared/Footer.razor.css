@@ -1,7 +1,7 @@
 ﻿.footer {
     display: flex;
     justify-content: space-around;
-    height: 50px;
+    height: 5vh;
 }
 
 .footer div.info {

@@ -6,16 +6,17 @@ namespace Solitaire.Games.Core.Models.Piles
     {
         public List<Card> Cards { get; set; }
 
-        public Pile() { 
+        public Pile()
+        {
             Cards = new List<Card>();
         }
         public static List<Pile> operator +(List<Pile> a, Pile b)
         {
-            return new List<Pile>(a) {b};
+            return new List<Pile>(a) { b };
         }
-        public bool IsFirstCard(Card card)
+        public List<Card> GetCardsAfter(int index)
         {
-            return Cards.IndexOf(card) == 0;
+            return new List<Card>(Cards.Skip(index));
         }
         public bool IsLastCard(Card card)
         {

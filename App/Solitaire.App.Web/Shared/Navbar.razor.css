@@ -3,13 +3,5 @@
     align-items: center;
     justify-content: center;
     width: auto;
-    height: 100px;
-}
-
-.title {
-    display: flex;
-    align-items: center;
-    font-size: 42px;
-    width: auto;
-    height: inherit;
+    height: 5vh;
 }

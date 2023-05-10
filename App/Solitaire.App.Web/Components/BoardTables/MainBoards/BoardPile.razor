@@ -2,13 +2,13 @@
 @inject ICardValidationService _service;
 
 <div class="board-pile">
-    <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => DragCardsAccepted(first, second)" AllowsDrag="(card) => card.IsFlipped">
+    <Dropzone Items="Pile.Cards" TItem="Card" OnItemDrop="(card) => OnItemDrop(card)" Accepts="(first, second) => DragCardsAccepted(first, second)" AllowsDrag="(card) => card.IsFlipped">
         @if(Pile.IsLastCard(context))
         {
             <CardItem Card=@context IsFlipped=true IndexZ=@Pile.Cards.IndexOf(context) OnClick=@(() => GameManager.ClickCard(context))></CardItem>
         } else
         {
-            <CardItem Card=@context IsFlipped=@context.IsFlipped IndexZ=@Pile.Cards.IndexOf(context)></CardItem>
+            <CardItem Card=@context IsFlipped=@context.IsFlipped IndexZ=@Pile.Cards.IndexOf(context) OnClick=@(() => GameManager.ClickCard(context))></CardItem>
         }
     </Dropzone>
 </div>
@@ -24,10 +24,17 @@
         if (Pile.IsEmpty() && second == null && _service.IsKing(first))
             return true;
 
-        if (_service.AreOpossiteColors(first, second) && 
+        if (_service.AreOppositeColors(first, second) && 
             _service.AreConsecutiveValuesDescending(first, second))
+        {
             return true;
+        }
 
         return false;
+    }
+
+    private void OnItemDrop(Card card)
+    {
+        GameManager.MoveCards(Pile);
     }
 }

@@ -2,6 +2,7 @@
 using Solitaire.Games.Core.Models.Cards;
 using Solitaire.Games.Core.Services;
 
+
 namespace Solitaire.Games.Core.Handlers
 {
     public class ClickCardHandler
@@ -11,30 +12,32 @@ namespace Solitaire.Games.Core.Handlers
             var suitPile = game.Board.SuitPiles.FirstOrDefault(kvp => kvp.Key == card.CardSuit).Value ?? throw new NullReferenceException($"Can't find a card suit {card.CardSuit} in suit piles");
             var boardPiles = game.Board.BoardPiles;
             var wastePile = game.Board.WastePile;
-            
+
+            var sourcePile = (boardPiles + wastePile).FirstOrDefault(pile => pile.Contains(card)) ?? throw new NullReferenceException($"Can't find card {card} in board piles");
+
             if ((suitPile.IsEmpty() && service.IsAce(card)) || (!suitPile.IsEmpty() && service.AreConsecutiveValuesAscending(card, suitPile.Cards.Last())))
             {
                 suitPile.Cards.Add(card);
+                sourcePile.Cards.Remove(card);
 
-                foreach (var pile in boardPiles + wastePile)
-                {
-                    if (pile.Contains(card))
-                    {
-                        pile.Cards.Remove(card);
-                        return;
-                    }
-                }
-
-            } else if(wastePile.Contains(card))
+            }
+            else if ((boardPiles + wastePile).Any(pile => pile.Contains(card)))
             {
-                foreach (var pile in boardPiles)
+                var destinationPile = boardPiles.FirstOrDefault(pile =>
+                    (pile.IsEmpty() && service.IsKing(card)) ||
+                    (!pile.IsEmpty() && service.AreConsecutiveValuesDescending(card, pile.Cards.Last()) && service.AreOppositeColors(card, pile.Cards.Last())));
+
+                if (destinationPile != null)
                 {
-                    var lastCard = pile.Cards.Last();
-                    if (service.AreConsecutiveValuesDescending(card, lastCard) && service.AreOpossiteColors(card, lastCard))
+                    if (!sourcePile.IsLastCard(card))
                     {
-                        pile.Cards.Add(card);
-                        wastePile.Cards.Remove(card);
-                        return;
+                        var index = sourcePile.Cards.IndexOf(card);
+                        MoveCardsHandler.Handle(index, sourcePile, destinationPile);
+                    }
+                    else
+                    {
+                        destinationPile.Cards.Add(card);
+                        sourcePile.Cards.Remove(card);
                     }
                 }
             }

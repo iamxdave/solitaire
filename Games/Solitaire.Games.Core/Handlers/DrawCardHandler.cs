@@ -8,7 +8,8 @@ namespace Solitaire.Games.Core.Handlers
         {
             var drawPile = game.Board.DrawPile;
 
-            if(drawPile.Cards.Count != 0) {
+            if (drawPile.Cards.Count != 0)
+            {
                 var wastePile = game.Board.WastePile;
 
                 var drawnCard = drawPile.Cards.Last();

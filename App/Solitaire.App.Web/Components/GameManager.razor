@@ -14,11 +14,31 @@
     public RenderFragment ChildContent { get; set; }
 
     public Game Game { get; private set; }
-    private bool _gameCreated;
+    public LastMove LastMove;
+
+    public void SetLastMove(Card card)
+    {
+        var boardPiles = Game.Board.BoardPiles;
+        var wastePile = Game.Board.WastePile;
+
+        var pile = (boardPiles + wastePile).FirstOrDefault(pile => pile.Contains(card));
+
+        if(pile == null)
+        {
+            LastMove = new LastMove();
+        }else
+        {
+            LastMove = new LastMove()
+            {
+                Pile = pile,
+                Index = pile.Cards.IndexOf(card),
+            };
+        }
+    }
 
     protected override void OnInitialized()
     {
-        Game = GameFactory.Create("new-player");
+        Game = GameFactory.Create();
     }
 
     public void DrawCard()
@@ -36,6 +56,12 @@
     public void ClickCard(Card card)
     {
         ClickCardHandler.Handle(Game, card, _service);
+        StateHasChanged();
+    }
+
+    public void MoveCards(Pile pile)
+    {
+        MoveCardsHandler.Handle(LastMove.Index, LastMove.Pile, pile);
         StateHasChanged();
     }
 }

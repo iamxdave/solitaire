@@ -8,18 +8,6 @@
         {
             Cards = new List<Card>();
         }
-        public Card GetCard()
-        {
-            var card = Cards.FirstOrDefault();
-
-            if(card == null)
-                throw new NullReferenceException("Player is out of cards!");
-
-            Cards.Remove(card);
-            return card;
-
-        }
-
         public List<Card> GetCards(int number)
         {
             var cards = Cards.GetRange(0, number);

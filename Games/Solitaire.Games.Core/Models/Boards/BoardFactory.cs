@@ -22,7 +22,7 @@ namespace Solitaire.Games.Core.Models.Boards
                 WastePile = new Pile()
             };
 
-            for(int i = 1; i <= 7; i++)
+            for (int i = 1; i <= 7; i++)
             {
                 board.BoardPiles.Add(PileFactory.Create(cardDeck, i));
             }

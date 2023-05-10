@@ -34,7 +34,7 @@ namespace Solitaire.Games.Core.Services
 
             return false;
         }
-        public bool AreOpossiteColors(Card first, Card second)
+        public bool AreOppositeColors(Card first, Card second)
         {
             if (first != null && second != null && first.IsFlipped && second.IsFlipped)
             {

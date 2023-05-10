@@ -1,11 +1,12 @@
-﻿<div class="card-item" style="--index: @IndexZ;" @onclick=@OnClick>
-    <img src="/images/cards/@ImageName" style="--select: @(IsFlipped ? "all" : "none")" />
+﻿<div class="card-item" style="--index: @IndexZ;" @onclick=@OnClick @ondragstart=@OnDragStart>
+    <img src="/images/cards/@(IsFlipped ? $"{Card.CardName}.png" : "cardback.png")" style="--select: @(IsFlipped ? "all" : "none")" />
 </div>
 
 @code {
     [CascadingParameter]
     public GameManager GameManager { get; set; }
     [Parameter]
+    [EditorRequired]
     public Card Card { get; set; }
     [Parameter]
     public bool IsFlipped { get; set; }
@@ -15,19 +16,16 @@
     public Action OnClick { get; set; }
 
 
-    private string ImageName;
-
-    private string Select;
-
     protected override void OnInitialized()
     {
-        if (Card is null)
-            ImageName = "blank.png";
-        else
-            ImageName = IsFlipped? $"{Card.CardName}.png" : "cardback.jpg";
+        if(Card != null)
+        {
+            Card.IsFlipped = IsFlipped;
+        }
+    }
 
-        Card.IsFlipped = IsFlipped;
-
-        Select = IsFlipped ? "all" : "none";
+    private void OnDragStart()
+    {
+        GameManager.SetLastMove(Card);
     }
 }
