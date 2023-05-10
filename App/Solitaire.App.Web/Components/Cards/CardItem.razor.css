@@ -10,7 +10,7 @@
 
 .board-pile .card-item {
     z-index: var(--index);
-    top: calc((var(--index)) * 25px);
+    top: calc((var(--index)) * calc(1vh + 0.8vw));
 }
 
 img {

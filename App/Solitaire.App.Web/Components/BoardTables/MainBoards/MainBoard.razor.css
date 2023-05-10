@@ -1,6 +1,34 @@
 ﻿.main-board {
     height: 65%;
-    margin-top: 25px;
+    margin-top: 3vh;
 }
 
+@media screen and (max-width: 1400px) {
+    .main-board {
+        height: 60%;
+    }
+}
 
+@media screen and (max-width: 1200px) {
+    .main-board {
+        height: 50%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .main-board {
+        height: 45%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-board {
+        height: 40%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .main-board {
+        height: 35%;
+    }
+}

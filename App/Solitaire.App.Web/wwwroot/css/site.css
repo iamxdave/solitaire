@@ -38,15 +38,18 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    gap: 2vw;
 }
 
 .main-board {
     align-items: flex-start;
 }
 
+.side-board .pile {
+    align-self: flex-end;
+}
+
 .pile {
-    height: 100%;
     max-width: 150px;
     min-width: 8vw;
     width: 100%;
@@ -87,8 +90,48 @@ main {
     content: "An error has occurred."
 }
 
-@media (max-width: 768px) {
-    .main-board, .hand-board {
-        gap: 1rem;
+
+@media screen and (max-width: 1400px) {
+    .main-board {
+        height: 60%;
+    }
+    .side-board {
+        height: 30%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .main-board {
+        height: 50%;
+    }
+    .side-board {
+        height: 25%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .main-board {
+        height: 40%;
+    }
+    .side-board {
+        height: 20%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-board {
+        height: 30%;
+    }
+    .side-board {
+        height: 10%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .main-board {
+        height: 20%;
+    }
+    .side-board {
+        height: 5%;
     }
 }
