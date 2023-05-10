@@ -52,6 +52,7 @@
   * Follow the guide
     > https://github.com/git-guides/install-git
 * [.NET](https://docs.microsoft.com/pl-pl/dotnet/)
+  * [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
   * Package
     - ``blazor-dragdrop``
 
