@@ -90,16 +90,16 @@ cd solitaire
 ## Visualization :camera: with a guide 📙
 
   _Website redirect the user on start to the game._
-
-![Game](https://github.com/iamxdave/solitaire/assets/74014874/9d254448-7b6b-4157-a8ef-3076d9ebcac4)
+![Game](https://github.com/iamxdave/solitaire/assets/74014874/ca513320-46d3-4215-ab74-984d77b4e6e0)
 
  _A gif repesenting simple dragging mechanics_
- 
-![solitaire_drag](https://github.com/iamxdave/solitaire/assets/74014874/9115e7f1-da40-4d49-b62c-342f357577d2)
+
+![solitaire_drag](https://github.com/iamxdave/solitaire/assets/74014874/2b54ac6b-f400-442e-8ebc-57f0823bf421)
 
 _A gif repesenting faster, more enjoyable scripting mechanics_
 
-![solitaire](https://github.com/iamxdave/solitaire/assets/74014874/6d88a418-35ea-4099-9219-faa122bd85e9)
+![solitaire](https://github.com/iamxdave/solitaire/assets/74014874/6291b73a-f3bb-4f40-824f-176937a569a5)
+
 <br/>
 
 <!-- CONTRIBUTING -->
