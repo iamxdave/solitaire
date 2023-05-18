@@ -8,6 +8,11 @@
     z-index: 1;
 }
 
+.card-item:hover {
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
 .board-pile .card-item {
     z-index: var(--index);
     top: calc((var(--index)) * calc(1vh + 0.8vw));
