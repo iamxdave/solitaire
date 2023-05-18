@@ -1,6 +1,6 @@
 ﻿@inject ICardValidationService _service;
 
-<div class="suit-pile">
+<div class="suit-pile" @onclick=@(() => GameManager.ClickCard(Pile.Cards.Last()))>
     <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => DragCardsAccepted(first, second)">
         <CardItem Card=@context IsFlipped=@context.IsFlipped IndexZ=@Pile.Cards.IndexOf(context)></CardItem>      
     </Dropzone>

@@ -1,4 +1,4 @@
-﻿<div class="waste-pile" @onclick="@OnClick">
+﻿<div class="waste-pile">
     <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => DragCardsAccepted(first, second)">
         <CardItem Card=@context IsFlipped=true IndexZ=@Pile.Cards.IndexOf(context) OnClick=@(() => GameManager.ClickCard(context))></CardItem>
     </Dropzone>
@@ -9,8 +9,6 @@
     public GameManager GameManager { get; set; }
     [Parameter]
     public Pile Pile { get; set; }
-    [Parameter]
-    public Action OnClick { get; set; }
 
     private bool DragCardsAccepted(Card first, Card second)
     {

@@ -1,5 +1,6 @@
 ﻿using Solitaire.Games.Core.Models;
 using Solitaire.Games.Core.Models.Cards;
+using Solitaire.Games.Core.Models.Piles;
 using Solitaire.Games.Core.Services;
 
 
@@ -9,37 +10,46 @@ namespace Solitaire.Games.Core.Handlers
     {
         public static void Handle(Game game, Card card, ICardValidationService service)
         {
-            var suitPile = game.Board.SuitPiles.FirstOrDefault(kvp => kvp.Key == card.CardSuit).Value ?? throw new NullReferenceException($"Can't find a card suit {card.CardSuit} in suit piles");
+            var suitKvps = game.Board.SuitPiles;
+            var cardSuitPile = suitKvps.FirstOrDefault(kvp => kvp.Key == card.CardSuit).Value ?? throw new NullReferenceException($"Can't find a card suit {card.CardSuit} in suit piles");
+            
+            var suitPiles = suitKvps.Values;
             var boardPiles = game.Board.BoardPiles;
             var wastePile = game.Board.WastePile;
 
-            var sourcePile = (boardPiles + wastePile).FirstOrDefault(pile => pile.Contains(card)) ?? throw new NullReferenceException($"Can't find card {card} in board piles");
+            var piles = new List<Pile>(boardPiles + wastePile);
+            piles.AddRange(suitKvps.Values);
 
-            if ((suitPile.IsEmpty() && service.IsAce(card)) || (!suitPile.IsEmpty() && service.AreConsecutiveValuesAscending(card, suitPile.Cards.Last())))
+            var sourcePile = piles.FirstOrDefault(pile => pile.Contains(card)) ?? throw new NullReferenceException($"Can't find card {card} in board piles");
+
+            if ((cardSuitPile.IsEmpty() && service.IsAce(card)) || (!cardSuitPile.IsEmpty() && service.AreConsecutiveValuesAscending(card, cardSuitPile.Cards.Last())))
             {
-                suitPile.Cards.Add(card);
+                cardSuitPile.Cards.Add(card);
                 sourcePile.Cards.Remove(card);
 
             }
-            else if ((boardPiles + wastePile).Any(pile => pile.Contains(card)))
+            else if ((piles.Any(pile => pile.Contains(card))))
             {
                 var destinationPile = boardPiles.FirstOrDefault(pile =>
                     (pile.IsEmpty() && service.IsKing(card)) ||
                     (!pile.IsEmpty() && service.AreConsecutiveValuesDescending(card, pile.Cards.Last()) && service.AreOppositeColors(card, pile.Cards.Last())));
 
-                if (destinationPile != null)
+                if (destinationPile == null)
                 {
-                    if (!sourcePile.IsLastCard(card))
-                    {
-                        var index = sourcePile.Cards.IndexOf(card);
-                        MoveCardsHandler.Handle(index, sourcePile, destinationPile);
-                    }
-                    else
-                    {
-                        destinationPile.Cards.Add(card);
-                        sourcePile.Cards.Remove(card);
-                    }
+                    return;
                 }
+                
+                if (!sourcePile.IsLastCard(card))
+                {
+                    var index = sourcePile.Cards.IndexOf(card);
+                    MoveCardsHandler.Handle(index, sourcePile, destinationPile);
+                }
+                else
+                {
+                    destinationPile.Cards.Add(card);
+                    sourcePile.Cards.Remove(card);
+                }
+                
             }
         }
     }

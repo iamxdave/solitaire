@@ -18,21 +18,20 @@
     public void SetLastMove(Card card)
     {
         var boardPiles = Game.Board.BoardPiles;
+        var suitPiles = Game.Board.SuitPiles;
         var wastePile = Game.Board.WastePile;
 
-        var pile = (boardPiles + wastePile).FirstOrDefault(pile => pile.Contains(card));
+        var piles = new List<Pile>(boardPiles + wastePile);
+        
+        piles.AddRange(suitPiles.Values);
 
-        if(pile == null)
+        var pile = (piles).First(pile => pile.Contains(card));
+
+        LastMove = new LastMove()
         {
-            LastMove = new LastMove();
-        }else
-        {
-            LastMove = new LastMove()
-            {
-                Pile = pile,
-                Index = pile.Cards.IndexOf(card),
-            };
-        }
+            Pile = pile,
+            Index = pile.Cards.IndexOf(card),
+        };
     }
 
     protected override void OnInitialized()

@@ -1,4 +1,4 @@
-﻿<div class="draw-pile" @onclick="@OnClick">
+﻿<div class="draw-pile" @onclick="@DrawAction">
     <Dropzone Items="Pile.Cards" TItem="Card" Accepts="(first, second) => false">
         <CardItem Card=@context IndexZ=@Pile.Cards.IndexOf(context)></CardItem>
     </Dropzone>
@@ -9,6 +9,11 @@
     public GameManager GameManager { get; set; }
     [Parameter]
     public Pile Pile { get; set; }
-    [Parameter]
-    public Action OnClick { get; set; }
+    private void DrawAction()
+    {
+        if (GameManager.Game.Board.DrawPile.IsEmpty())
+            GameManager.ResetDeck();
+        else
+            GameManager.DrawCard();
+    }
 }
