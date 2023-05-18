@@ -1,5 +1,4 @@
-﻿@using Solitaire.Games.Core.Handlers;
-@inject ICardValidationService _service;
+﻿@inject IGameHandlingService _handlingService;
 
 <div class="game-manager">
     <CascadingValue Value="this">
@@ -43,25 +42,25 @@
 
     public void DrawCard()
     {
-        DrawCardHandler.Handle(Game);
+        _handlingService.DrawCard(Game);
         StateHasChanged();
     }
 
     public void ResetDeck()
     {
-        ResetDeckHandler.Handle(Game);
+        _handlingService.ResetDeck(Game);
         StateHasChanged();
     }
 
     public void ClickCard(Card card)
     {
-        ClickCardHandler.Handle(Game, card, _service);
+        _handlingService.ClickCard(Game, card);
         StateHasChanged();
     }
 
     public void MoveCards(Pile pile)
     {
-        MoveCardsHandler.Handle(LastMove.Index, LastMove.Pile, pile);
+        _handlingService.MoveCards(LastMove.Index, LastMove.Pile, pile);
         StateHasChanged();
     }
 }

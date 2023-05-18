@@ -6,6 +6,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddBlazorDragDrop();
 builder.Services.AddSingleton<ICardValidationService, CardValidationService>();
+builder.Services.AddSingleton<IGameHandlingService, GameHandlingService>();
 
 var app = builder.Build();
 
