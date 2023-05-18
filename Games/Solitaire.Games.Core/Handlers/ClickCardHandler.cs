@@ -10,15 +10,14 @@ namespace Solitaire.Games.Core.Handlers
     {
         public static void Handle(Game game, Card card, ICardValidationService service)
         {
-            var suitKvps = game.Board.SuitPiles;
-            var cardSuitPile = suitKvps.FirstOrDefault(kvp => kvp.Key == card.CardSuit).Value ?? throw new NullReferenceException($"Can't find a card suit {card.CardSuit} in suit piles");
+            var suitPiles = game.Board.SuitPiles;
+            var cardSuitPile = suitPiles.FirstOrDefault(pile => pile.CardSuit == card.CardSuit) ?? throw new NullReferenceException($"Can't find a card suit {card.CardSuit} in suit piles");
             
-            var suitPiles = suitKvps.Values;
             var boardPiles = game.Board.BoardPiles;
             var wastePile = game.Board.WastePile;
 
             var piles = new List<Pile>(boardPiles + wastePile);
-            piles.AddRange(suitKvps.Values);
+            piles.AddRange(suitPiles);
 
             var sourcePile = piles.FirstOrDefault(pile => pile.Contains(card)) ?? throw new NullReferenceException($"Can't find card {card} in board piles");
 

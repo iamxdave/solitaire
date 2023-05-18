@@ -23,7 +23,7 @@
 
         var piles = new List<Pile>(boardPiles + wastePile);
         
-        piles.AddRange(suitPiles.Values);
+        piles.AddRange(suitPiles);
 
         var pile = (piles).First(pile => pile.Contains(card));
 

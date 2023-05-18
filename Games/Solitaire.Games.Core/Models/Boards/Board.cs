@@ -6,7 +6,7 @@ namespace Solitaire.Games.Core.Models.Boards
     public class Board
     {
         public List<Pile> BoardPiles { get; set; }
-        public Dictionary<CardSuit, Pile> SuitPiles { get; set; }
+        public List<SuitPile> SuitPiles { get; set; }
         public Pile DrawPile { get; set; }
         public Pile WastePile { get; set; }
     }

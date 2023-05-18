@@ -13,8 +13,8 @@
     @foreach(var pile in GameManager.Game.Board.SuitPiles)
     {
         <div class="pile">
-            <SymbolCover Symbol=@GetSymbol(pile.Key)></SymbolCover>
-            <SuitPile Suit=@pile.Key Pile=@pile.Value></SuitPile>
+            <SymbolCover Symbol=@GetSymbol(pile.CardSuit)></SymbolCover>
+            <SuitPile Suit=@pile.CardSuit Pile=@pile></SuitPile>
         </div>
     }
 </div>

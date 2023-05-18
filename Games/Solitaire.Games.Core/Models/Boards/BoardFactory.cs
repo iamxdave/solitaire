@@ -10,14 +10,13 @@ namespace Solitaire.Games.Core.Models.Boards
             var board = new Board
             {
                 BoardPiles = new List<Pile>(),
-                SuitPiles = new Dictionary<CardSuit, Pile>
+                SuitPiles = new List<SuitPile>()
                 {
-                    {CardSuit.hearts, new Pile()},
-                    {CardSuit.diamonds, new Pile()},
-                    {CardSuit.clubs, new Pile()},
-                    {CardSuit.spades, new Pile()}
+                   new SuitPile(CardSuit.hearts),
+                   new SuitPile(CardSuit.diamonds),
+                   new SuitPile(CardSuit.clubs),
+                   new SuitPile(CardSuit.spades)
                 },
-
                 DrawPile = new Pile(),
                 WastePile = new Pile()
             };
