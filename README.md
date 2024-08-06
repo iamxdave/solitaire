@@ -2,8 +2,6 @@
   <h1 >Solitaire</h1>
   <p>♣️♦️♠️♥️</p>
   Welcome to Solitaire, a popular single-player card game built using C#, .NET and the Blazor framework.
-  
-  [solitaire.azurewebsites.net](solitaire.azurewebsites.net) 
 </div>
 <br/>
 
